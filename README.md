@@ -1,1 +1,1 @@
-https://refine-dashboard-web.netlify.app/my-profile
+https://refine-dashboard-web.netlify.app/
