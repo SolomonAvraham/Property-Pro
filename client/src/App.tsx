@@ -1,5 +1,3 @@
-
-
 import { Refine, AuthProvider } from "@pankod/refine-core";
 import {
   notificationProvider,
@@ -19,10 +17,8 @@ import {
 } from "@mui/icons-material";
 
 import dataProvider from "@pankod/refine-simple-rest";
-import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
-import { ColorModeContextProvider } from "contexts";
 import { Title, Sider, Layout, Header } from "components/layout";
 import { CredentialResponse } from "interfaces/google";
 import { parseJwt } from "utils/parse-jwt";
@@ -39,7 +35,7 @@ import {
   EditProperty,
 } from "pages";
 
-import 'index.css';
+import "index.css";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -127,10 +123,11 @@ function App() {
   };
 
   return (
-    <ColorModeContextProvider>
-      <CssBaseline />
-      <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+    <>
       <RefineSnackbarProvider>
+        <CssBaseline />
+        <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+
         <Refine
           dataProvider={dataProvider(
             "https://refine-dashboard-4ths.onrender.com/api/v1"
@@ -180,7 +177,7 @@ function App() {
           DashboardPage={Home}
         />
       </RefineSnackbarProvider>
-    </ColorModeContextProvider>
+    </>
   );
 }
 
