@@ -36,12 +36,12 @@ const TotalRevenue = () => {
         </Stack>
       </Stack>
 
-      {/* <ReactApexChart
+      <ReactApexChart
         series={TotalRevenueSeries}
         type="bar"
         height={310}
         options={TotalRevenueOptions}
-      /> */}
+      />
     </Box>
   );
 };
