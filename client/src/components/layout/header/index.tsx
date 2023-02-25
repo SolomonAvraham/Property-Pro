@@ -7,13 +7,17 @@ import {
   Toolbar,
   Typography,
   Avatar,
+  Link,
 } from "@pankod/refine-mui";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
 import { ColorModeContext } from "contexts";
+import { useNavigate } from "@pankod/refine-react-router-v6";
 
 export const Header: React.FC = () => {
   const { mode, setMode } = useContext(ColorModeContext);
+
+  const navigate = useNavigate();
 
   const { data: user } = useGetIdentity();
   const shouldRenderHeader = true; // since we are using the dark/light toggle; we don't need to check if user is logged in or not.
@@ -46,10 +50,16 @@ export const Header: React.FC = () => {
             justifyContent="center"
           >
             {user?.name ? (
-              <Typography variant="subtitle2">{user?.name}</Typography>
+              <Typography variant="subtitle2">
+                <Link href="/my-profile" color="inherit" underline="hover">
+                  {user?.name}
+                </Link>
+              </Typography>
             ) : null}
             {user?.avatar ? (
-              <Avatar src={user?.avatar} alt={user?.name} />
+              <Link href="/my-profile" color="inherit" underline="hover">
+                <Avatar src={user?.avatar} alt={user?.name} />
+              </Link>
             ) : null}
           </Stack>
         </Stack>

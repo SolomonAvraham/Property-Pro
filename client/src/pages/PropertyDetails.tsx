@@ -31,11 +31,19 @@ const PropertyDetails = () => {
   const propertyDetails = data?.data ?? {};
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Typography  justifyItems={'center'} textAlign="center" fontSize={35} fontWeight={600}>
+        Loading...
+      </Typography>
+    );
   }
 
   if (isError) {
-    return <div>Something went wrong!</div>;
+    return (
+      <Typography textAlign="center" fontSize={35} fontWeight={600}>
+        Something went wrong!{" "}
+      </Typography>
+    );
   }
 
   const isCurrentUser = user.email === propertyDetails.creator.email;
@@ -64,7 +72,7 @@ const PropertyDetails = () => {
       bgcolor="#FCFCFC"
       width="fit-content"
     >
-      <Typography fontSize={25} fontWeight={700} color="#11142D">
+      <Typography textAlign="center" fontSize={35} fontWeight={600} color="#11142D">
         Details
       </Typography>
 

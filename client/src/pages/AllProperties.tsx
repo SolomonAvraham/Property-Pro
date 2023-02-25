@@ -49,14 +49,27 @@ const AllProperties = () => {
     };
   }, [filters]);
 
-  if (isLoading) return <Typography>Loading...</Typography>;
-  if (isError) return <Typography>Error...</Typography>;
+  if (isLoading) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+      Loading...
+    </Typography>
+  );
+  if (isError) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+      Error 
+    </Typography>
+  );
 
   return (
     <Box>
       <Box mt="20px" sx={{ display: "flex", flexWrap: "wrap", gap: 3 }}>
         <Stack direction="column" width="100%">
-          <Typography fontSize={25} fontWeight={700} color="#11142d">
+          <Typography
+            textAlign="center"
+            fontSize={35}
+            fontWeight={600}
+            color="#11142d"
+          >
             {!allProperties.length
               ? "There are no properties"
               : "All Properties"}
@@ -141,7 +154,7 @@ const AllProperties = () => {
       </Box>
 
       <Stack direction="row" justifyContent="space-between" alignItems="center">
-         <CustomButton
+        <CustomButton
           title="Add Property"
           handleClick={() => navigate("/properties/create")}
           backgroundColor="#475be8"

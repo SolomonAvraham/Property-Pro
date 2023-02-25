@@ -8,12 +8,25 @@ const Agents = () => {
 
   const allAgents = data?.data ?? [];
 
-  if (isLoading) return <div>loading...</div>;
-  if (isError) return <div>error...</div>;
+  if (isLoading) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+      Loading...
+    </Typography>
+  );
+  if (isError) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+     Error
+    </Typography>
+  );
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142d">
+      <Typography
+        textAlign="center"
+        fontSize={35}
+        fontWeight={600}
+        color="#11142d"
+      >
         Agents List
       </Typography>
 

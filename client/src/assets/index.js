@@ -1,7 +1,4 @@
-import logo from './logo.svg';
-import yariga from './yariga.svg';
+import logo from "./logo.svg";
+import propertyPro from "./propertyPro.png";
 
-export {
-  logo,
-  yariga,
-};
+export { logo, propertyPro };

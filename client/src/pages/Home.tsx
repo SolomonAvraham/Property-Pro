@@ -20,12 +20,25 @@ const Home = () => {
 
   const latestProperties = data?.data ?? [];
 
-  if (isLoading) return <Typography>Loading...</Typography>;
-  if (isError) return <Typography>Something went wrong!</Typography>;
+  if (isLoading) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+      Loading...
+    </Typography>
+  );
+  if (isError) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+      Something went wrong!
+    </Typography>
+  );
 
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142D">
+      <Typography
+        textAlign="center"
+        fontSize={35}
+        fontWeight={600}
+        color="#11142D"
+      >
         Dashboard
       </Typography>
 

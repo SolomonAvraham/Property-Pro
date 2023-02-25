@@ -1,5 +1,6 @@
+import { Rowing } from "@mui/icons-material";
 import { useGetIdentity, useOne } from "@pankod/refine-core";
-
+import { Typography } from "@pankod/refine-mui";
 import { Profile } from "components";
 
 const MyProfile = () => {
@@ -11,8 +12,16 @@ const MyProfile = () => {
 
   const myProfile = data?.data ?? [];
 
-  if (isLoading) return <div>loading...</div>;
-  if (isError) return <div>error...</div>;
+  if (isLoading) return (
+    <Typography   textAlign="center" fontSize={35} fontWeight={600}>
+      Loading...
+    </Typography>
+  );
+  if (isError) return (
+    <Typography textAlign="center" fontSize={35} fontWeight={600}>
+      Error
+    </Typography>
+  );
 
   return (
     <Profile

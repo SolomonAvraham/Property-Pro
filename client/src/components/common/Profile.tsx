@@ -12,7 +12,7 @@ function checkImage(url: any) {
 
 const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
   <Box>
-    <Typography fontSize={25} fontWeight={700} color="#11142D">
+    <Typography textAlign="center" fontSize={35} fontWeight={600} color="#11142D">
       {type} Profile
     </Typography>
 
