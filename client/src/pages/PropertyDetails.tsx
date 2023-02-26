@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { Typography, Box, Stack } from "@pankod/refine-mui";
+import { Typography, Box, Stack,Grid } from "@pankod/refine-mui";
 import { useDelete, useGetIdentity, useShow } from "@pankod/refine-core";
 import { useParams, useNavigate } from "@pankod/refine-react-router-v6";
 import {
@@ -10,7 +10,7 @@ import {
   Place,
   Star,
 } from "@mui/icons-material";
-
+import GridLoader from "react-spinners/ClipLoader";
 import { CustomButton } from "components";
 
 function checkImage(url: any) {
@@ -30,21 +30,32 @@ const PropertyDetails = () => {
 
   const propertyDetails = data?.data ?? {};
 
-  if (isLoading) {
-    return (
-      <Typography  justifyItems={'center'} textAlign="center" fontSize={35} fontWeight={600}>
-        Loading...
-      </Typography>
-    );
-  }
-
-  if (isError) {
-    return (
-      <Typography textAlign="center" fontSize={35} fontWeight={600}>
-        Something went wrong!{" "}
-      </Typography>
-    );
-  }
+ if (isLoading)
+   return (
+     <Grid
+       container
+       spacing={0}
+       direction="column"
+       alignItems="center"
+       justifyContent="center"
+       sx={{ minHeight: "100vh" }}
+     >
+       <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+     </Grid>
+   );
+ if (isError)
+   return (
+     <Grid
+       container
+       spacing={0}
+       direction="column"
+       alignItems="center"
+       justifyContent="center"
+       sx={{ minHeight: "100vh" }}
+     >
+       Error
+     </Grid>
+   );
 
   const isCurrentUser = user.email === propertyDetails.creator.email;
 
@@ -73,7 +84,7 @@ const PropertyDetails = () => {
       width="fit-content"
     >
       <Typography textAlign="center" fontSize={35} fontWeight={600} color="#11142D">
-        Details
+        Property Details
       </Typography>
 
       <Box

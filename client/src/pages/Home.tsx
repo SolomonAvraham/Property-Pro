@@ -1,6 +1,6 @@
 import { useList } from "@pankod/refine-core";
-import { Typography, Box, Stack } from "@pankod/refine-mui";
-
+import { Typography, Box, Stack,Grid } from "@pankod/refine-mui";
+import GridLoader from "react-spinners/ClipLoader";
 import {
   PieChart,
   PropertyReferrals,
@@ -20,16 +20,32 @@ const Home = () => {
 
   const latestProperties = data?.data ?? [];
 
-  if (isLoading) return (
-    <Typography textAlign="center" fontSize={35} fontWeight={600}>
-      Loading...
-    </Typography>
-  );
-  if (isError) return (
-    <Typography textAlign="center" fontSize={35} fontWeight={600}>
-      Something went wrong!
-    </Typography>
-  );
+ if (isLoading)
+   return (
+     <Grid
+       container
+       spacing={0}
+       direction="column"
+       alignItems="center"
+       justifyContent="center"
+       sx={{ minHeight: "100vh" }}
+     >
+       <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+     </Grid>
+   );
+ if (isError)
+   return (
+     <Grid
+       container
+       spacing={0}
+       direction="column"
+       alignItems="center"
+       justifyContent="center"
+       sx={{ minHeight: "100vh" }}
+     >
+       Error
+     </Grid>
+   );
 
   return (
     <Box>

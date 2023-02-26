@@ -1,6 +1,6 @@
 import { useList } from "@pankod/refine-core";
-import { Box, Typography } from "@pankod/refine-mui";
-
+import { Box, Typography, Grid } from "@pankod/refine-mui";
+import GridLoader from "react-spinners/ClipLoader";
 import { AgentCard } from "components";
 
 const Agents = () => {
@@ -8,16 +8,32 @@ const Agents = () => {
 
   const allAgents = data?.data ?? [];
 
-  if (isLoading) return (
-    <Typography textAlign="center" fontSize={35} fontWeight={600}>
-      Loading...
-    </Typography>
-  );
-  if (isError) return (
-    <Typography textAlign="center" fontSize={35} fontWeight={600}>
-     Error
-    </Typography>
-  );
+  if (isLoading)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+      </Grid>
+    );
+  if (isError)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        Error
+      </Grid>
+    );
 
   return (
     <Box>

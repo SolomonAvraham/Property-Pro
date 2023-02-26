@@ -7,9 +7,11 @@ import {
   TextField,
   Select,
   MenuItem,
+  Grid
 } from "@pankod/refine-mui";
 import { useNavigate } from "@pankod/refine-react-router-v6";
 import { useMemo } from "react";
+import GridLoader from "react-spinners/ClipLoader";
 
 import { PropertyCard, CustomButton } from "components";
 
@@ -49,16 +51,32 @@ const AllProperties = () => {
     };
   }, [filters]);
 
-  if (isLoading) return (
-    <Typography textAlign="center" fontSize={35} fontWeight={600}>
-      Loading...
-    </Typography>
-  );
-  if (isError) return (
-    <Typography textAlign="center" fontSize={35} fontWeight={600}>
-      Error 
-    </Typography>
-  );
+  if (isLoading)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+      </Grid>
+    );
+  if (isError)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        Error
+      </Grid>
+    );
 
   return (
     <Box>
