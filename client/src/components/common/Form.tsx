@@ -89,8 +89,16 @@ const Form = ({
             />
           </FormControl>
 
-          <Stack direction="row" gap={4}>
-            <FormControl sx={{ flex: 1 }}>
+          <Stack
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+            direction="row"
+            gap={4}
+          >
+            <FormControl>
               <FormHelperText
                 sx={{
                   fontWeight: 500,
@@ -129,6 +137,34 @@ const Form = ({
                   margin: "10px 0",
                   fontSize: 16,
                   color: "#11142d",
+                  textAlign: "center",
+                }}
+              >
+                Real estate Type
+              </FormHelperText>
+              <Select
+                variant="outlined"
+                color="info"
+                displayEmpty
+                required
+                inputProps={{ "aria-label": "Without label" }}
+                defaultValue="rent"
+                {...register("realEstateType", {
+                  required: true,
+                })}
+              >
+                <MenuItem value="rent">Rent</MenuItem>
+                <MenuItem value="sell">Sell</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <FormHelperText
+                sx={{
+                  fontWeight: 500,
+                  margin: "10px 0",
+                  fontSize: 16,
+                  color: "#11142d",
+                  textAlign: "center",
                 }}
               >
                 Enter property price
@@ -207,7 +243,7 @@ const Form = ({
           </Stack>
 
           <CustomButton
-            type= "submit" 
+            type="submit"
             title={formLoading ? "Submitting..." : "Submit"}
             backgroundColor="#475be8"
             color="#fcfcfc"

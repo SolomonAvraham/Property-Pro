@@ -36,13 +36,6 @@ export const Header: React.FC = () => {
           justifyContent="flex-end"
           alignItems="center"
         >
-          {/* <IconButton
-            onClick={() => {
-              setMode();
-            }}
-          >
-            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-          </IconButton> */}
           <Stack
             direction="row"
             gap="16px"
@@ -50,7 +43,14 @@ export const Header: React.FC = () => {
             justifyContent="center"
           >
             {user?.name ? (
-              <Typography variant="subtitle2">
+              <Typography
+                sx={{
+                  "&:hover": {
+                    color: "#3E6DBF",
+                  },
+                }}
+                variant="button"
+              >
                 <Link href="/my-profile" color="inherit" underline="hover">
                   {user?.name}
                 </Link>

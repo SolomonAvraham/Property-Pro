@@ -19,6 +19,7 @@ const Home = () => {
   });
 
   const latestProperties = data?.data ?? [];
+console.log(latestProperties);
 
  if (isLoading)
    return (
@@ -61,25 +62,25 @@ const Home = () => {
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
           title="Properties for Sale"
-          value={684}
+          value={latestProperties.length}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Properties for Rent"
-          value={550}
+          value={0}
           series={[60, 40]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Total customers"
-          value={5684}
+          value={0}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Properties for Cities"
-          value={555}
+          value={0}
           series={[75, 25]}
           colors={["#275be8", "#c4e8ef"]}
         />

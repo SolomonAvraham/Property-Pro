@@ -52,8 +52,16 @@ const getAllProperties = async (req, res) => {
 
 const createProperty = async (req, res) => {
   try {
-    const { title, description, propertyType, location, price, photo, email } =
-      req.body;
+    const {
+      title,
+      description,
+      propertyType,
+      realEstateType,
+      location,
+      price,
+      photo,
+      email,
+    } = req.body;
 
     const session = await mongoose.startSession();
     session.startTransaction();
@@ -69,6 +77,7 @@ const createProperty = async (req, res) => {
       description,
       propertyType,
       location,
+      realEstateType,
       price,
       photo: photoUrl.url,
       creator: user._id,
@@ -85,7 +94,6 @@ const createProperty = async (req, res) => {
   }
 };
 
-
 const getPropertyDetail = async (req, res) => {
   const { id } = req.params;
   const propertyExists = await Property.findOne({ _id: id }).populate(
@@ -98,9 +106,6 @@ const getPropertyDetail = async (req, res) => {
     res.status(404).json({ message: "Property not found" });
   }
 };
-
-
-
 
 const updateProperty = async (req, res) => {
   try {
@@ -127,7 +132,6 @@ const updateProperty = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
 
 const deleteProperty = async (req, res) => {
   try {
