@@ -17,7 +17,9 @@ const PropertyCard = ({
   location,
   price,
   photo,
+  realEstateType,
 }: PropertyCardProps) => {
+  
   return (
     <Card
       component={Link}
@@ -63,7 +65,7 @@ const PropertyCard = ({
             />
             <Typography fontSize={14} color="#808191">
               {location}
-            </Typography>
+            </Typography>{" "}
           </Stack>
         </Stack>
         <Box
@@ -74,7 +76,18 @@ const PropertyCard = ({
           height="fit-content"
         >
           <Typography fontSize={12} fontWeight={600} color="#475be8">
-            ${price}
+            {realEstateType === "Sale" ? "For Sale" : "Rental"}
+          </Typography>
+        </Box>
+        <Box
+          px={1.5}
+          py={0.5}
+          borderRadius={1}
+          bgcolor="#dadefa"
+          height="fit-content"
+        >
+          <Typography fontSize={12} fontWeight={600} color="#475be8">
+            ${price.toLocaleString()}
           </Typography>
         </Box>
       </CardContent>

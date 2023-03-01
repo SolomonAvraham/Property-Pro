@@ -1,10 +1,51 @@
 import ReactApexChart from "react-apexcharts";
-import { Box, Typography, Stack } from "@pankod/refine-mui";
+import { Box, Typography, Stack, Grid } from "@pankod/refine-mui";
 import { ArrowCircleUpRounded } from "@mui/icons-material";
-
+import { useList } from "@pankod/refine-core";
 import { TotalRevenueOptions, TotalRevenueSeries } from "./chart.config";
+import GridLoader from "react-spinners/ClipLoader";
+
 
 const TotalRevenue = () => {
+  const { data, isLoading, isError } = useList({
+    resource: "properties",
+  });
+
+  const totalRevenue = data?.data ?? [];
+
+  const totalPrice = totalRevenue.reduce(
+    (accumulator, item) => accumulator + item.price,
+    0
+  );
+
+
+  if (isLoading)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+      </Grid>
+    );
+  if (isError)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        Error
+      </Grid>
+    );
+  
   return (
     <Box
       p={4}
@@ -21,7 +62,7 @@ const TotalRevenue = () => {
 
       <Stack my="20px" direction="row" gap={4} flexWrap="wrap">
         <Typography fontSize={28} fontWeight={700} color="#11142d">
-          $236,535
+          ${totalPrice.toLocaleString()}
         </Typography>
         <Stack direction="row" alignItems="center" gap={1}>
           <ArrowCircleUpRounded sx={{ fontSize: 25, color: "#475be8" }} />

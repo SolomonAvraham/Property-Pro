@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { Typography, Box, Stack,Grid } from "@pankod/refine-mui";
+import { Typography, Box, Stack, Grid } from "@pankod/refine-mui";
 import { useDelete, useGetIdentity, useShow } from "@pankod/refine-core";
 import { useParams, useNavigate } from "@pankod/refine-react-router-v6";
 import {
@@ -30,32 +30,32 @@ const PropertyDetails = () => {
 
   const propertyDetails = data?.data ?? {};
 
- if (isLoading)
-   return (
-     <Grid
-       container
-       spacing={0}
-       direction="column"
-       alignItems="center"
-       justifyContent="center"
-       sx={{ minHeight: "100vh" }}
-     >
-       <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
-     </Grid>
-   );
- if (isError)
-   return (
-     <Grid
-       container
-       spacing={0}
-       direction="column"
-       alignItems="center"
-       justifyContent="center"
-       sx={{ minHeight: "100vh" }}
-     >
-       Error
-     </Grid>
-   );
+  if (isLoading)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+      </Grid>
+    );
+  if (isError)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        Error
+      </Grid>
+    );
 
   const isCurrentUser = user.email === propertyDetails.creator.email;
 
@@ -83,7 +83,12 @@ const PropertyDetails = () => {
       bgcolor="#FCFCFC"
       width="fit-content"
     >
-      <Typography textAlign="center" fontSize={35} fontWeight={600} color="#11142D">
+      <Typography
+        textAlign="center"
+        fontSize={35}
+        fontWeight={600}
+        color="#11142D"
+      >
         Property Details
       </Typography>
 
@@ -155,14 +160,43 @@ const PropertyDetails = () => {
                   mt="10px"
                   color="#11142D"
                 >
+                  Property Type
+                </Typography>
+                <Stack direction="row" alignItems="flex-end" gap={1}>
+                  <Typography
+                    textAlign={"center"}
+                    fontSize={25}
+                    fontWeight={700}
+                    color="#475BE8"
+                  >
+                    {propertyDetails.realEstateType === "Sale"
+                      ? "For Sale"
+                      : "Rental"}
+                  </Typography>
+                </Stack>
+              </Box>
+              <Box>
+                <Typography
+                  fontSize={16}
+                  fontWeight={600}
+                  mt="10px"
+                  color="#11142D"
+                >
                   Price
                 </Typography>
                 <Stack direction="row" alignItems="flex-end" gap={1}>
                   <Typography fontSize={25} fontWeight={700} color="#475BE8">
-                    ${propertyDetails.price}
+                    ${propertyDetails.price.toLocaleString()}
                   </Typography>
-                  <Typography fontSize={14} color="#808191" mb={0.5}>
-                    for one day
+                  <Typography
+                    textAlign={"center"}
+                    fontSize={14}
+                    color="#808191"
+                    mb={0.5}
+                  >
+                    {propertyDetails.realEstateType === "Sale"
+                      ? ""
+                      : "for a month"}
                   </Typography>
                 </Stack>
               </Box>

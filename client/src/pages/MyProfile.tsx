@@ -46,6 +46,7 @@ const MyProfile = () => {
       email={myProfile.email}
       avatar={myProfile.avatar}
       properties={myProfile.allProperties}
+      realEstateType={myProfile.realEstateType}
     />
   );
 };

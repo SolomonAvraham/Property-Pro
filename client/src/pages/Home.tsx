@@ -1,5 +1,5 @@
 import { useList } from "@pankod/refine-core";
-import { Typography, Box, Stack,Grid } from "@pankod/refine-mui";
+import { Typography, Box, Stack, Grid } from "@pankod/refine-mui";
 import GridLoader from "react-spinners/ClipLoader";
 import {
   PieChart,
@@ -11,42 +11,48 @@ import {
 const Home = () => {
   const { data, isLoading, isError } = useList({
     resource: "properties",
-    config: {
-      pagination: {
-        pageSize: 4,
-      },
-    },
+    // config: {
+    //   pagination: {
+    //     pageSize: 100,
+    //   },
+    // },
   });
 
   const latestProperties = data?.data ?? [];
-console.log(latestProperties);
 
- if (isLoading)
-   return (
-     <Grid
-       container
-       spacing={0}
-       direction="column"
-       alignItems="center"
-       justifyContent="center"
-       sx={{ minHeight: "100vh" }}
-     >
-       <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
-     </Grid>
-   );
- if (isError)
-   return (
-     <Grid
-       container
-       spacing={0}
-       direction="column"
-       alignItems="center"
-       justifyContent="center"
-       sx={{ minHeight: "100vh" }}
-     >
-       Error
-     </Grid>
-   );
+  const propertiesForRent = latestProperties.filter(
+    (item) => item.realEstateType === "Rent"
+  ).length;
+  const propertiesForSale = latestProperties.filter(
+    (item) => item.realEstateType === "Sale"
+  ).length;
+
+  if (isLoading)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+      </Grid>
+    );
+  if (isError)
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        sx={{ minHeight: "100vh" }}
+      >
+        Error
+      </Grid>
+    );
 
   return (
     <Box>
@@ -62,26 +68,20 @@ console.log(latestProperties);
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
           title="Properties for Sale"
-          value={latestProperties.length}
-          series={[75, 25]}
+          value={propertiesForSale}
+          series={[propertiesForSale, latestProperties.length]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Properties for Rent"
-          value={0}
-          series={[60, 40]}
+          value={propertiesForRent}
+          series={[propertiesForRent, latestProperties.length]}
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
           title="Total customers"
-          value={0}
-          series={[75, 25]}
-          colors={["#275be8", "#c4e8ef"]}
-        />
-        <PieChart
-          title="Properties for Cities"
-          value={0}
-          series={[75, 25]}
+          value={latestProperties ? latestProperties.length : 0}
+          series={[latestProperties ? latestProperties.length : 0]}
           colors={["#275be8", "#c4e8ef"]}
         />
       </Box>
@@ -119,6 +119,7 @@ console.log(latestProperties);
               location={property.location}
               price={property.price}
               photo={property.photo}
+              realEstateType={property.realEstateType}
             />
           ))}
         </Box>

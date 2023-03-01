@@ -1,9 +1,43 @@
 import ReactApexChart from "react-apexcharts";
-import { Box, Typography, Stack } from "@pankod/refine-mui";
-
+import { Box, Typography, Stack,Grid } from "@pankod/refine-mui";
+import { useList } from "@pankod/refine-core";
 import { PieChartProps } from "interfaces/home";
+import GridLoader from "react-spinners/ClipLoader";
 
 const PieChart = ({ title, value, series, colors }: PieChartProps) => {
+  const {  isLoading, isError } = useList({
+    resource: "properties",
+  });
+
+
+
+if (isLoading)
+  return (
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: "100vh" }}
+    >
+      <GridLoader color="hsla(216, 78%, 57%, 1)" size={100} />
+    </Grid>
+  );
+if (isError)
+  return (
+    <Grid
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      sx={{ minHeight: "100vh" }}
+    >
+      Error
+    </Grid>
+  );
+
   return (
     <Box
       id="chart"
@@ -40,8 +74,6 @@ const PieChart = ({ title, value, series, colors }: PieChartProps) => {
         type="donut"
         width="120px"
       />
-
-      
     </Box>
   );
 };

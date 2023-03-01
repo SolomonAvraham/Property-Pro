@@ -87,7 +87,7 @@ const AllProperties = () => {
             fontSize={35}
             fontWeight={600}
             color="#11142d"
-          > 
+          >
             {!allProperties.length
               ? "There are no properties"
               : "All Properties"}
@@ -190,6 +190,7 @@ const AllProperties = () => {
             location={property.location}
             price={property.price}
             photo={property.photo}
+            realEstateType={property.realEstateType}
           />
         ))}
       </Box>
