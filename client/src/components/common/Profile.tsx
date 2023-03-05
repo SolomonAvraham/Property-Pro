@@ -1,5 +1,5 @@
 import { Email, Phone, Place } from "@mui/icons-material";
-import { Box, Stack, Typography } from "@pankod/refine-mui";
+import { Box, Link, Stack, Typography } from "@pankod/refine-mui";
 
 import { ProfileProps, PropertyProps } from "interfaces/common";
 import PropertyCard from "./PropertyCard";
@@ -80,12 +80,12 @@ const Profile = ({
                   {name}
                 </Typography>
                 <Typography fontSize={16} color="#808191">
-                  Realestate Agent
+                  Real-Estate Agent
                 </Typography>
               </Stack>
 
               <Stack direction="column" gap="30px">
-                <Stack gap="15px">
+                {/* <Stack gap="15px">
                   <Typography fontSize={14} fontWeight={500} color="#808191">
                     Address
                   </Typography>
@@ -100,10 +100,10 @@ const Profile = ({
                       4517 Washington Ave. Manchaster, Kentucky 39495
                     </Typography>
                   </Box>
-                </Stack>
+                </Stack> */}
 
                 <Stack direction="row" flexWrap="wrap" gap="20px" pb={4}>
-                  <Stack flex={1} gap="15px">
+                  {/* <Stack flex={1} gap="15px">
                     <Typography fontSize={14} fontWeight={500} color="#808191">
                       Phone Number
                     </Typography>
@@ -118,7 +118,7 @@ const Profile = ({
                         +0123 456 7890
                       </Typography>
                     </Box>
-                  </Stack>
+                  </Stack> */}
 
                   <Stack flex={1} gap="15px">
                     <Typography fontSize={14} fontWeight={500} color="#808191">
@@ -131,8 +131,11 @@ const Profile = ({
                       gap="10px"
                     >
                       <Email sx={{ color: "#11142D" }} />
-                      <Typography fontSize={14} color="#11142D">
-                        {email}
+                      <Typography  fontSize={14} color="#11142D">
+                    
+                         {email}
+                 
+                       
                       </Typography>
                     </Box>
                   </Stack>

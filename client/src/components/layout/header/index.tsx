@@ -7,7 +7,6 @@ import {
   Toolbar,
   Typography,
   Avatar,
-  Link,
 } from "@pankod/refine-mui";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 
@@ -27,7 +26,7 @@ export const Header: React.FC = () => {
       color="default"
       position="sticky"
       elevation={0}
-      sx={{ background: "#fcfcf" }}
+      sx={{ background: "#475BE8", boxShadow: "3" }}
     >
       <Toolbar>
         <Stack
@@ -45,21 +44,21 @@ export const Header: React.FC = () => {
             {user?.name ? (
               <Typography
                 sx={{
+                  color: "whitesmoke",
+                  fontSize: "17px",
+                  cursor: "pointer",
                   "&:hover": {
-                    color: "#3E6DBF",
+                    color: "#111",
                   },
                 }}
                 variant="button"
+                onClick={() => navigate("/my-profile")}
               >
-                <Link href="/my-profile" color="inherit" underline="hover">
-                  {user?.name}
-                </Link>
+                {user?.name}
               </Typography>
             ) : null}
             {user?.avatar ? (
-              <Link href="/my-profile" color="inherit" underline="hover">
-                <Avatar src={user?.avatar} alt={user?.name} />
-              </Link>
+              <Avatar src={user?.avatar} alt={user?.name} />
             ) : null}
           </Stack>
         </Stack>

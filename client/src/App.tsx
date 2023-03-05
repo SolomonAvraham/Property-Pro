@@ -150,16 +150,16 @@ function App() {
               show: AgentProfile,
               icon: <PeopleAltOutlined />,
             },
-            {
-              name: "reviews",
-              list: Home,
-              icon: <StarOutlineRounded />,
-            },
-            {
-              name: "messages",
-              list: Home,
-              icon: <ChatBubbleOutline />,
-            },
+            // {
+            //   name: "reviews",
+            //   list: Home,
+            //   icon: <StarOutlineRounded />,
+            // },
+            // {
+            //   name: "messages",
+            //   list: Home,
+            //   icon: <ChatBubbleOutline />,
+            // },
             {
               name: "my-profile",
               options: { label: "My Profile " },

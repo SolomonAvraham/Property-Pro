@@ -28,6 +28,7 @@ const AgentCard = ({
   noOfProperties,
 }: AgentCardProp) => {
   const { data: currentUser } = useGetIdentity();
+console.log(currentUser);
 
   const generateLink = () => {
     if (currentUser.email === email) return "/my-profile";
@@ -86,11 +87,11 @@ const AgentCard = ({
             icon={<EmailOutlined sx={{ color: "#808191" }} />}
             name={email}
           />
-          <InfoBar icon={<Place sx={{ color: "#808191" }} />} name="London" />
-          <InfoBar
+          {/* <InfoBar icon={<Place sx={{ color: "#808191" }} />} name="Lon don" /> */}
+          {/* <InfoBar
             icon={<Phone sx={{ color: "#808191" }} />}
             name="+502-3231-4141"
-          />
+          /> */}
           <InfoBar
             icon={<LocationCity sx={{ color: "#808191" }} />}
             name={`${noOfProperties} Properties`}

@@ -25,7 +25,12 @@ const Form = ({
 }: FormProps) => {
   return (
     <Box>
-      <Typography fontSize={25} fontWeight={700} color="#11142d">
+      <Typography
+        textAlign={"center"}
+        fontSize={25}
+        fontWeight={700}
+        color="#11142d"
+      >
         {type} a Property
       </Typography>
 
@@ -72,6 +77,7 @@ const Form = ({
               Enter Description
             </FormHelperText>
             <TextareaAutosize
+              minLength={15}
               minRows={5}
               required
               placeholder="Write description"
@@ -140,7 +146,7 @@ const Form = ({
                   textAlign: "center",
                 }}
               >
-                Real estate Type
+                Real-Estate Type
               </FormHelperText>
               <Select
                 variant="outlined"

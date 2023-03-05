@@ -1,8 +1,9 @@
 import { useOne } from "@pankod/refine-core";
 import { useParams } from "@pankod/refine-react-router-v6";
-import { Typography,Grid } from "@pankod/refine-mui";
+import { Grid } from "@pankod/refine-mui";
 import { Profile } from "components";
 import GridLoader from "react-spinners/ClipLoader";
+
 const AgentProfile = () => {
   const { id } = useParams();
 
@@ -11,9 +12,10 @@ const AgentProfile = () => {
     id: id as string,
   });
 
-  console.log(data);
+ 
 
   const myProfile = data?.data ?? [];
+ 
 
  if (isLoading)
    return (

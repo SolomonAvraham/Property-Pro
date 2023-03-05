@@ -10,13 +10,15 @@ import {
 
 const Home = () => {
   const { data, isLoading, isError } = useList({
-    resource: "properties",
-    // config: {
+    resource: "properties" ,
     //   pagination: {
     //     pageSize: 100,
     //   },
     // },
   });
+  
+ console.log(data);
+ 
 
   const latestProperties = data?.data ?? [];
 
@@ -64,7 +66,6 @@ const Home = () => {
       >
         Dashboard
       </Typography>
-
       <Box mt="20px" display="flex" flexWrap="wrap" gap={4}>
         <PieChart
           title="Properties for Sale"
@@ -79,7 +80,7 @@ const Home = () => {
           colors={["#275be8", "#c4e8ef"]}
         />
         <PieChart
-          title="Total customers"
+          title="Total Properties"
           value={latestProperties ? latestProperties.length : 0}
           series={[latestProperties ? latestProperties.length : 0]}
           colors={["#275be8", "#c4e8ef"]}
